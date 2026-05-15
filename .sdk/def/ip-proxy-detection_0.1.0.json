@@ -1,0 +1,372 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "IP Proxy Detection",
+    "description": "GetIPIntel.net provides a free API that detects proxy, VPN, and malicious IP addresses to prevent fraud and abuse on online platforms. It uses advanced algorithms to analyze IP behavior and issue a probability score indicating the likelihood of an IP being fraudulent or abusive.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://getipintel.net/free-proxy-vpn-tor-detection-api/"
+    },
+    "termsOfService": "https://getipintel.net/free-proxy-vpn-tor-detection-api/"
+  },
+  "servers": [
+    {
+      "url": "http://check.getipintel.net",
+      "description": "IP Proxy Detection API Server"
+    }
+  ],
+  "paths": {
+    "/check.php": {
+      "get": {
+        "summary": "Check IP Address for Proxy/VPN/Malicious Activity",
+        "description": "Determines how likely an IP address is a proxy/VPN/bad IP using advanced mathematical and modern computing techniques. Returns a value between 0-1 indicating probability, where values > 0.99 are most likely proxies.",
+        "operationId": "checkIP",
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "query",
+            "description": "The IP address to check (IPv4 fully supported, IPv6 partially supported)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "8.8.8.8"
+            }
+          },
+          {
+            "name": "contact",
+            "in": "query",
+            "description": "Valid email address for contact information (required for all queries)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "example": "your.email@example.com"
+            }
+          },
+          {
+            "name": "flags",
+            "in": "query",
+            "description": "Optional flags to modify behavior: 'm' (dynamic ban list only), 'b' (dynamic ban list and checks), 'f' (force full lookup), 'n' (exclude real-time block list). Can be combined (e.g., 'nm')",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "m",
+                "b",
+                "f",
+                "n",
+                "nm",
+                "nb",
+                "nf"
+              ],
+              "example": "m"
+            }
+          },
+          {
+            "name": "oflags",
+            "in": "query",
+            "description": "Output flags for additional information: 'b' (bad IP check), 'c' (country), 'i' (iCloud/Google VPN detection), 'a' (ASN number), 'r' (residential proxy detection). Can be combined (e.g., 'bc')",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^[bciar]+$",
+              "example": "b"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format for the response",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json"
+              ],
+              "example": "json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with proxy detection result",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "description": "A value between 0-1 indicating proxy probability, or negative value on error",
+                  "example": "0.99"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "success": {
+                    "summary": "Successful proxy detection",
+                    "value": {
+                      "status": "success",
+                      "result": "1",
+                      "queryIP": "66.228.119.72",
+                      "queryFlags": "m",
+                      "queryFormat": "json",
+                      "contact": "your.email@example.com"
+                    }
+                  },
+                  "successWithExtendedInfo": {
+                    "summary": "Success with additional flags",
+                    "value": {
+                      "status": "success",
+                      "result": "0.99",
+                      "queryIP": "8.8.8.8",
+                      "queryFlags": "b",
+                      "queryFormat": "json",
+                      "contact": "your.email@example.com",
+                      "BadIP": 0,
+                      "Country": "US",
+                      "ASN": "15169",
+                      "iCloudRelayEgress": 0,
+                      "GoogleOneVPN": 0,
+                      "VPNType": "none",
+                      "ResidentialProxy": "0"
+                    }
+                  },
+                  "error": {
+                    "summary": "Error response",
+                    "value": {
+                      "status": "error",
+                      "result": "-2",
+                      "message": "Invalid IP address",
+                      "queryIP": "10.10.10.10,8.8.8.8",
+                      "queryFlags": null,
+                      "queryFormat": "json",
+                      "contact": "your.email@example.com"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid parameters or error code returned",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "description": "Negative error code",
+                  "enum": [
+                    "-1",
+                    "-2",
+                    "-3",
+                    "-4",
+                    "-5",
+                    "-6"
+                  ],
+                  "example": "-2"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests - Query limit exceeded (500 queries per day, 15 queries per minute)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "Rate limit exceeded"
+                }
+              }
+            }
+          }
+        },
+        "x-rate-limit": {
+          "description": "API has rate limits: 500 queries per day and 15 queries per minute"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SuccessResponse": {
+        "type": "object",
+        "required": [
+          "status",
+          "result",
+          "queryIP",
+          "queryFormat",
+          "contact"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "success"
+            ],
+            "description": "Status of the query"
+          },
+          "result": {
+            "type": "string",
+            "description": "Probability score between 0-1 indicating likelihood of proxy/VPN/bad IP. Values > 0.99 are most likely proxies",
+            "example": "0.99"
+          },
+          "queryIP": {
+            "type": "string",
+            "description": "The IP address that was queried",
+            "example": "8.8.8.8"
+          },
+          "queryFlags": {
+            "type": "string",
+            "nullable": true,
+            "description": "The flags parameter used in the query",
+            "example": "m"
+          },
+          "queryFormat": {
+            "type": "string",
+            "description": "The format parameter used in the query",
+            "example": "json"
+          },
+          "contact": {
+            "type": "string",
+            "description": "The contact email address provided in the query",
+            "example": "your.email@example.com"
+          },
+          "BadIP": {
+            "type": "integer",
+            "description": "Present when oflags=b is used. 1 indicates bad IP, 0 otherwise",
+            "enum": [
+              0,
+              1
+            ],
+            "example": 0
+          },
+          "Country": {
+            "type": "string",
+            "description": "Present when oflags=c is used. 2-character ISO-3166 country code",
+            "example": "US"
+          },
+          "ASN": {
+            "type": "string",
+            "description": "Present when oflags=a is used. ASN number(s) of the IP. Multiple ASNs separated by semicolon",
+            "example": "15169"
+          },
+          "iCloudRelayEgress": {
+            "type": "integer",
+            "description": "Present when oflags=i is used. 1 indicates iCloud Relay Egress IP, 0 otherwise",
+            "enum": [
+              0,
+              1
+            ],
+            "example": 0
+          },
+          "GoogleOneVPN": {
+            "type": "integer",
+            "description": "Present when oflags=i is used. 1 indicates Google One VPN IP, 0 otherwise",
+            "enum": [
+              0,
+              1
+            ],
+            "example": 0
+          },
+          "VPNType": {
+            "type": "string",
+            "description": "Present when oflags=i is used. Type of VPN detected",
+            "enum": [
+              "none",
+              "GoogleOneVPN",
+              "GoogleFiVPN",
+              "iCloudRelayEgress"
+            ],
+            "example": "none"
+          },
+          "ResidentialProxy": {
+            "type": "string",
+            "description": "Present when oflags=r is used. Score from 0-1 where 1 is a highly active residential proxy",
+            "example": "0"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "status",
+          "result",
+          "message",
+          "queryIP",
+          "queryFormat",
+          "contact"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "error"
+            ],
+            "description": "Status of the query"
+          },
+          "result": {
+            "type": "string",
+            "description": "Error code: -1 (invalid input), -2 (invalid IP), -3 (unroutable/private address), -4 (database unavailable), -5 (IP banned/no permission), -6 (no/invalid contact info)",
+            "enum": [
+              "-1",
+              "-2",
+              "-3",
+              "-4",
+              "-5",
+              "-6"
+            ],
+            "example": "-2"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error message",
+            "example": "Invalid IP address"
+          },
+          "queryIP": {
+            "type": "string",
+            "description": "The IP address that was queried",
+            "example": "10.10.10.10"
+          },
+          "queryFlags": {
+            "type": "string",
+            "nullable": true,
+            "description": "The flags parameter used in the query",
+            "example": null
+          },
+          "queryFormat": {
+            "type": "string",
+            "description": "The format parameter used in the query",
+            "example": "json"
+          },
+          "contact": {
+            "type": "string",
+            "description": "The contact email address provided in the query",
+            "example": "your.email@example.com"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "IP Detection",
+      "description": "Proxy, VPN, and malicious IP detection endpoints"
+    }
+  ],
+  "x-rate-limits": {
+    "queries-per-day": 500,
+    "queries-per-minute": 15
+  }
+}

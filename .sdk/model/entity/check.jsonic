@@ -1,0 +1,115 @@
+# Entity: check
+
+main: kit: entity: check: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "contact"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "query_flag"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "query_format"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "query_ip"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "result"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "check"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "your.email@example.com"
+                kind: "query"
+                name: "contact"
+                orig: "contact"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "m"
+                kind: "query"
+                name: "flag"
+                orig: "flag"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "json"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "8.8.8.8"
+                kind: "query"
+                name: "ip"
+                orig: "ip"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "b"
+                kind: "query"
+                name: "oflag"
+                orig: "oflag"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/check.php"
+          parts: [
+            "check.php"
+          ]
+          select: {
+            exist: [
+              "contact"
+              "flag"
+              "format"
+              "ip"
+              "oflag"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

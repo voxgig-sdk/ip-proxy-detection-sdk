@@ -1,0 +1,28 @@
+# BasicCheckFlow
+
+main: kit: flow: BasicCheckFlow:
+{
+  entity: "check",
+  kind: "basic",
+  name: "BasicCheckFlow",
+  step: [
+    {
+      input: {
+        ref: "check_ref01",
+        srcdatavar: "check_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-check_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCheckFlow"
+}

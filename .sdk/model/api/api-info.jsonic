@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://getipintel.net/free-proxy-vpn-tor-detection-api/"
+      }
+      description: "GetIPIntel.net provides a free API that detects proxy, VPN, and malicious IP addresses to prevent fraud and abuse on online platforms. It uses advanced algorithms to analyze IP behavior and issue a probability score indicating the likelihood of an IP being fraudulent or abusive."
+      servers: [
+        {
+          description: "IP Proxy Detection API Server"
+          url: "http://check.getipintel.net"
+        }
+      ]
+      termsOfService: "https://getipintel.net/free-proxy-vpn-tor-detection-api/"
+      title: "IP Proxy Detection"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
