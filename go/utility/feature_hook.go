@@ -3,7 +3,7 @@ package utility
 import (
 	"reflect"
 
-	"github.com/voxgig-sdk/ip-proxy-detection-sdk/core"
+	"github.com/voxgig-sdk/ip-proxy-detection-sdk/go/core"
 )
 
 func featureHookUtil(ctx *core.Context, name string) {

@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/ip-proxy-detection-sdk"
-	"github.com/voxgig-sdk/ip-proxy-detection-sdk/core"
+	sdk "github.com/voxgig-sdk/ip-proxy-detection-sdk/go"
+	"github.com/voxgig-sdk/ip-proxy-detection-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/ip-proxy-detection-sdk/go/utility/struct"
 )
 
 func TestCheckEntity(t *testing.T) {

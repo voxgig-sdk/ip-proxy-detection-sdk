@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/ip-proxy-detection-sdk/core"
+	"github.com/voxgig-sdk/ip-proxy-detection-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/ip-proxy-detection-sdk/go/utility/struct"
 )
 
 type CheckEntity struct {

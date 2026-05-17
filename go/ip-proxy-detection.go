@@ -1,10 +1,10 @@
 package voxgigipproxydetectionsdk
 
 import (
-	"github.com/voxgig-sdk/ip-proxy-detection-sdk/core"
-	"github.com/voxgig-sdk/ip-proxy-detection-sdk/entity"
-	"github.com/voxgig-sdk/ip-proxy-detection-sdk/feature"
-	_ "github.com/voxgig-sdk/ip-proxy-detection-sdk/utility"
+	"github.com/voxgig-sdk/ip-proxy-detection-sdk/go/core"
+	"github.com/voxgig-sdk/ip-proxy-detection-sdk/go/entity"
+	"github.com/voxgig-sdk/ip-proxy-detection-sdk/go/feature"
+	_ "github.com/voxgig-sdk/ip-proxy-detection-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

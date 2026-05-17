@@ -7,7 +7,8 @@
         "query_format": "s3e",
         "query_ip": "s3f",
         "result": "s40",
-        "status": "s41"
+        "status": "s41",
+        "id": "CHECK00"
       },
       "CHECK01": {
         "contact": "s78",
@@ -15,7 +16,8 @@
         "query_format": "s7a",
         "query_ip": "s7b",
         "result": "s7c",
-        "status": "s7d"
+        "status": "s7d",
+        "id": "CHECK01"
       },
       "CHECK02": {
         "contact": "sb4",
@@ -23,7 +25,8 @@
         "query_format": "sb6",
         "query_ip": "sb7",
         "result": "sb8",
-        "status": "sb9"
+        "status": "sb9",
+        "id": "CHECK02"
       }
     }
   },

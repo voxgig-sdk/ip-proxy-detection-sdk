@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/ip-proxy-detection-sdk/core"
+	"github.com/voxgig-sdk/ip-proxy-detection-sdk/go/core"
 )
 
 type BaseFeature struct {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/ip-proxy-detection-sdk"
-	"github.com/voxgig-sdk/ip-proxy-detection-sdk/core"
+	sdk "github.com/voxgig-sdk/ip-proxy-detection-sdk/go"
+	"github.com/voxgig-sdk/ip-proxy-detection-sdk/go/core"
 )
 
 func TestCheckDirect(t *testing.T) {
