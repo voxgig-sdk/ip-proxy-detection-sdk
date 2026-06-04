@@ -17,7 +17,17 @@
         ],
         "termsOfService": "https://getipintel.net/free-proxy-vpn-tor-detection-api/",
         "title": "IP Proxy Detection",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Score any IPv4/IPv6 address for proxy, VPN, Tor, or otherwise abusive traffic on a 0–1 probability scale",
+        "homepage": "https://getipintel.net/",
+        "docs_url": "https://getipintel.net/free-proxy-vpn-tor-detection-api/",
+        "license_short": "Free for low-volume use; mandatory attribution, contact email required, no reselling.",
+        "license_md": "- Free tier is rate-limited to roughly 15 requests/minute and 500 queries/day; higher volumes require a paid arrangement.\n- Every request must include a valid `contact` email — queries without accurate contact info are rejected.\n- Users must credit GetIPIntel and may not resell the returned data or run random/incremental IP sweeps.\n- No API key system; the contact email serves as identification.",
+        "about_md": "[GetIPIntel](https://getipintel.net/) is a free proxy, VPN and bad-IP detection service maintained by an independent developer with a background in networking and machine learning. The SDK wraps the public endpoint at `http://check.getipintel.net/check.php`, which returns a single probability score indicating how likely a given IP address is to be a proxy, VPN, Tor exit, or otherwise abusive host.\n\nWhat you get from the API:\n- A probability score between `0` and `1` (inclusive) on success — scores above `0.99` are described as \"most likely proxies\", below `0.90` as low risk.\n- Negative integer values on error conditions (invalid input, rate-limit, etc.).\n- Optional `flags` and `oflags` query parameters to tune the lookup (e.g. include machine-learning checks, full bad-IP checks, or extra metadata).\n- Optional `format=json` for a JSON response instead of plain text.\n\nDetection draws on dynamic ban lists of known public proxies, machine-learning inference on IP characteristics, and feeds for malware, botnets and compromised hosts. The contact email parameter is mandatory, CORS is disabled (server-to-server use only), and clients exceeding the free quota receive HTTP 429.",
+        "entity_desc": {
+          "check": "Looks up a single IP address and returns its proxy/VPN/abuse probability score via `GET /check.php?ip=<addr>&contact=<email>` (optionally `format=json`, `flags=`, `oflags=`)."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +35,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "check": {

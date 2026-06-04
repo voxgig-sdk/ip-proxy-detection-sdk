@@ -106,14 +106,12 @@ func checkDirectSetup(mockres any) *checkDirectSetupResult {
 	env := envOverride(map[string]any{
 		"IPPROXYDETECTION_TEST_CHECK_ENTID": map[string]any{},
 		"IPPROXYDETECTION_TEST_LIVE":    "FALSE",
-		"IPPROXYDETECTION_APIKEY":       "NONE",
 	})
 
 	live := env["IPPROXYDETECTION_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["IPPROXYDETECTION_APIKEY"],
 		}
 		client := sdk.NewIpProxyDetectionSDK(mergedOpts)
 

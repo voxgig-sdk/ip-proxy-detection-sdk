@@ -31,9 +31,7 @@ loading a specific record.
 ```ruby
 require_relative "IpProxyDetection_sdk"
 
-client = IpProxyDetectionSDK.new({
-  "apikey" => ENV["IP-PROXY-DETECTION_APIKEY"],
-})
+client = IpProxyDetectionSDK.new({})
 ```
 
 ### 3. Load a check
@@ -121,7 +119,6 @@ Create a `.env.local` file at the project root:
 
 ```
 IP-PROXY-DETECTION_TEST_LIVE=TRUE
-IP-PROXY-DETECTION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -144,7 +141,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

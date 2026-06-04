@@ -28,16 +28,13 @@ package main
 
 import (
     "fmt"
-    "os"
 
     sdk "github.com/voxgig-sdk/ip-proxy-detection-sdk/go"
     "github.com/voxgig-sdk/ip-proxy-detection-sdk/go/core"
 )
 
 func main() {
-    client := sdk.NewIpProxyDetectionSDK(map[string]any{
-        "apikey": os.Getenv("IP-PROXY-DETECTION_APIKEY"),
-    })
+    client := sdk.NewIpProxyDetectionSDK(map[string]any{})
 ```
 
 ### 3. Load a check
@@ -140,7 +137,6 @@ Create a `.env.local` file at the project root:
 
 ```
 IP-PROXY-DETECTION_TEST_LIVE=TRUE
-IP-PROXY-DETECTION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -162,7 +158,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `"apikey"` | `string` | API key for authentication. |
 | `"base"` | `string` | Base URL of the API server. |
 | `"prefix"` | `string` | URL path prefix prepended to all requests. |
 | `"suffix"` | `string` | URL path suffix appended to all requests. |
