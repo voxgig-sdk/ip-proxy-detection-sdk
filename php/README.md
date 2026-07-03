@@ -10,7 +10,7 @@ The PHP SDK for the IpProxyDetection API — an entity-oriented client using PHP
 
 ## Install
 ```bash
-composer require voxgig/ip-proxy-detection-sdk
+composer require voxgig-sdk/ip-proxy-detection
 ```
 
 

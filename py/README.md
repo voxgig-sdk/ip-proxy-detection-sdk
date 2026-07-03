@@ -10,7 +10,7 @@ The Python SDK for the IpProxyDetection API — an entity-oriented client follow
 
 ## Install
 ```bash
-pip install ip-proxy-detection-sdk
+pip install voxgig-sdk-ip-proxy-detection
 ```
 
 Or install from source:

@@ -10,13 +10,13 @@ The Ruby SDK for the IpProxyDetection API — an entity-oriented client using id
 
 ## Install
 ```bash
-gem install ip-proxy-detection-sdk
+gem install voxgig-sdk-ip-proxy-detection
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "ip-proxy-detection-sdk"
+gem "voxgig-sdk-ip-proxy-detection"
 ```
 
 Then run:

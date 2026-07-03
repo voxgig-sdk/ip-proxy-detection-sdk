@@ -10,7 +10,7 @@ The TypeScript SDK for the IpProxyDetection API — a type-safe, entity-oriented
 
 ## Install
 ```bash
-npm install ip-proxy-detection
+npm install @voxgig-sdk/ip-proxy-detection
 ```
 ## Tutorial: your first API call
 

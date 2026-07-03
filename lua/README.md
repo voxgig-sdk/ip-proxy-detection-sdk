@@ -10,7 +10,7 @@ The Lua SDK for the IpProxyDetection API — an entity-oriented client using Lua
 
 ## Install
 ```bash
-luarocks install ip-proxy-detection-sdk
+luarocks install voxgig-sdk-ip-proxy-detection
 ```
 
 If the module is not yet published, add the source directory to
