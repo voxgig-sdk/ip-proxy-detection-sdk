@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'IP_PROXY_DETECTION_TEST_CHECK_ENTID': idmap,
     'IP_PROXY_DETECTION_TEST_LIVE': 'FALSE',
     'IP_PROXY_DETECTION_TEST_EXPLAIN': 'FALSE',
+    'IP_PROXY_DETECTION_APIKEY': 'NONE',
   })
 
   idmap = env['IP_PROXY_DETECTION_TEST_CHECK_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new IpProxyDetectionSDK(merge([
       {
+        apikey: env.IP_PROXY_DETECTION_APIKEY,
       },
       extra
     ]))

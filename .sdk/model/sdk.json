@@ -1,40 +1,13 @@
 {
-  "name": "ip-proxy-detection",
-  "origin": "voxgig-sdk",
   "def": "ip-proxy-detection_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
-      "info": {
-        "contact": {
-          "url": "https://getipintel.net/free-proxy-vpn-tor-detection-api/"
-        },
-        "description": "GetIPIntel.net provides a free API that detects proxy, VPN, and malicious IP addresses to prevent fraud and abuse on online platforms. It uses advanced algorithms to analyze IP behavior and issue a probability score indicating the likelihood of an IP being fraudulent or abusive.",
-        "servers": [
-          {
-            "description": "IP Proxy Detection API Server",
-            "url": "http://check.getipintel.net"
-          }
-        ],
-        "termsOfService": "https://getipintel.net/free-proxy-vpn-tor-detection-api/",
-        "title": "IP Proxy Detection",
-        "version": "1.0.0",
-        "tagline": "Score any IPv4/IPv6 address for proxy, VPN, Tor, or otherwise abusive traffic on a 0–1 probability scale",
-        "homepage": "https://getipintel.net/",
-        "docs_url": "https://getipintel.net/free-proxy-vpn-tor-detection-api/",
-        "license_short": "Free for low-volume use; mandatory attribution, contact email required, no reselling.",
-        "license_md": "- Free tier is rate-limited to roughly 15 requests/minute and 500 queries/day; higher volumes require a paid arrangement.\n- Every request must include a valid `contact` email — queries without accurate contact info are rejected.\n- Users must credit GetIPIntel and may not resell the returned data or run random/incremental IP sweeps.\n- No API key system; the contact email serves as identification.",
-        "about_md": "[GetIPIntel](https://getipintel.net/) is a free proxy, VPN and bad-IP detection service maintained by an independent developer with a background in networking and machine learning. The SDK wraps the public endpoint at `http://check.getipintel.net/check.php`, which returns a single probability score indicating how likely a given IP address is to be a proxy, VPN, Tor exit, or otherwise abusive host.\n\nWhat you get from the API:\n- A probability score between `0` and `1` (inclusive) on success — scores above `0.99` are described as \"most likely proxies\", below `0.90` as low risk.\n- Negative integer values on error conditions (invalid input, rate-limit, etc.).\n- Optional `flags` and `oflags` query parameters to tune the lookup (e.g. include machine-learning checks, full bad-IP checks, or extra metadata).\n- Optional `format=json` for a JSON response instead of plain text.\n\nDetection draws on dynamic ban lists of known public proxies, machine-learning inference on IP characteristics, and feeds for malware, botnets and compromised hosts. The contact email parameter is mandatory, CORS is disabled (server-to-server use only), and clients exceeding the free quota receive HTTP 429.",
-        "entity_desc": {
-          "check": "Looks up a single IP address and returns its proxy/VPN/abuse probability score via `GET /check.php?ip=<addr>&contact=<email>` (optionally `format=json`, `flags=`, `oflags=`)."
-        },
-        "auth": false
-      },
       "config": {
         "auth": {
           "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
         },
         "docs_order": [
           "ts",
@@ -43,103 +16,109 @@
           "go",
           "rb",
           "lua"
-        ]
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
       },
       "entity": {
         "check": {
+          "active": true,
           "alias": {
             "field": {}
           },
           "fields": [
             {
+              "active": true,
               "name": "contact",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "query_flag",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "query_format",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "query_ip",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "result",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "status",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             }
           ],
           "name": "check",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "your.email@example.com",
                         "kind": "query",
                         "name": "contact",
                         "orig": "contact",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "m",
                         "kind": "query",
                         "name": "flag",
                         "orig": "flag",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "json",
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "8.8.8.8",
                         "kind": "query",
                         "name": "ip",
                         "orig": "ip",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "b",
                         "kind": "query",
                         "name": "oflag",
                         "orig": "oflag",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -160,14 +139,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
           "relations": {
             "ancestors": []
           }
@@ -175,9 +151,6 @@
       },
       "feature": {
         "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
           "active": true,
           "config": {
             "options": {
@@ -185,6 +158,14 @@
             }
           },
           "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
             "PostConstruct": {
               "active": true,
               "await": false
@@ -193,25 +174,11 @@
               "active": true,
               "await": false
             },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
+            "PostOperation": {
+              "active": false,
               "await": false
             },
             "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
               "active": true,
               "await": false
             },
@@ -227,20 +194,32 @@
               "active": true,
               "await": false
             },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
             "PreTarget": {
               "active": false,
               "await": false
             },
-            "PostOperation": {
-              "active": false,
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
               "await": false
             }
           },
+          "name": "test",
           "target": {
-            "ts": {
+            "go": {
               "deps": {}
             },
-            "go": {
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
               "deps": {}
             },
             "lua": {
@@ -255,28 +234,34 @@
             "rb": {
               "deps": {}
             },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
+            "ts": {
               "deps": {}
             }
-          }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
         }
       },
       "flow": {
         "BasicCheckFlow": {
+          "active": true,
           "entity": "check",
+          "key$": "BasicCheckFlow",
           "kind": "basic",
           "name": "BasicCheckFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "check_ref01",
                 "srcdatavar": "check_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -284,28 +269,53 @@
                     "mark": "Mark01-check_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicCheckFlow",
-          "active": true,
-          "param": {}
+          ]
         }
       },
+      "info": {
+        "contact": {
+          "url": "https://getipintel.net/free-proxy-vpn-tor-detection-api/"
+        },
+        "description": "GetIPIntel.net provides a free API that detects proxy, VPN, and malicious IP addresses to prevent fraud and abuse on online platforms. It uses advanced algorithms to analyze IP behavior and issue a probability score indicating the likelihood of an IP being fraudulent or abusive.",
+        "servers": [
+          {
+            "description": "IP Proxy Detection API Server",
+            "url": "http://check.getipintel.net"
+          }
+        ],
+        "termsOfService": "https://getipintel.net/free-proxy-vpn-tor-detection-api/",
+        "title": "IP Proxy Detection",
+        "version": "1.0.0"
+      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "ip-proxy-detection"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "ip-proxy-detection"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -320,19 +330,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "ip-proxy-detection"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -347,138 +357,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "ip-proxy-detection"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "ip-proxy-detection"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "ip-proxy-detection"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "ip-proxy-detection"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "ip-proxy-detection"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "ip-proxy-detection"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "ip-proxy-detection"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "ip-proxy-detection"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "ip-proxy-detection"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "ip-proxy-detection",
+  "origin": "voxgig-sdk"
 }

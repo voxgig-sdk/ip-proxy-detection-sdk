@@ -91,6 +91,7 @@ def _check_basic_setup(extra):
         "IPPROXYDETECTION_TEST_CHECK_ENTID": idmap,
         "IPPROXYDETECTION_TEST_LIVE": "FALSE",
         "IPPROXYDETECTION_TEST_EXPLAIN": "FALSE",
+        "IPPROXYDETECTION_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _check_basic_setup(extra):
     if env.get("IPPROXYDETECTION_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("IPPROXYDETECTION_APIKEY"),
             },
             extra or {},
         ])

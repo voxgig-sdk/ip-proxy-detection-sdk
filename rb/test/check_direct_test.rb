@@ -68,12 +68,14 @@ def check_direct_setup(mockres)
   env = Runner.env_override({
     "IPPROXYDETECTION_TEST_CHECK_ENTID" => {},
     "IPPROXYDETECTION_TEST_LIVE" => "FALSE",
+    "IPPROXYDETECTION_APIKEY" => "NONE",
   })
 
   live = env["IPPROXYDETECTION_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["IPPROXYDETECTION_APIKEY"],
     }
     client = IpProxyDetectionSDK.new(merged_opts)
     return {

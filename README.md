@@ -1,20 +1,8 @@
 # IpProxyDetection SDK
 
-Score any IPv4/IPv6 address for proxy, VPN, Tor, or otherwise abusive traffic on a 0–1 probability scale
+IP Proxy Detection client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About IP Proxy Detection
-
-[GetIPIntel](https://getipintel.net/) is a free proxy, VPN and bad-IP detection service maintained by an independent developer with a background in networking and machine learning. The SDK wraps the public endpoint at `http://check.getipintel.net/check.php`, which returns a single probability score indicating how likely a given IP address is to be a proxy, VPN, Tor exit, or otherwise abusive host.
-
-What you get from the API:
-- A probability score between `0` and `1` (inclusive) on success — scores above `0.99` are described as "most likely proxies", below `0.90` as low risk.
-- Negative integer values on error conditions (invalid input, rate-limit, etc.).
-- Optional `flags` and `oflags` query parameters to tune the lookup (e.g. include machine-learning checks, full bad-IP checks, or extra metadata).
-- Optional `format=json` for a JSON response instead of plain text.
-
-Detection draws on dynamic ban lists of known public proxies, machine-learning inference on IP characteristics, and feeds for malware, botnets and compromised hosts. The contact email parameter is mandatory, CORS is disabled (server-to-server use only), and clients exceeding the free quota receive HTTP 429.
 
 ## Try it
 
@@ -48,27 +36,31 @@ gem install ip-proxy-detection-sdk
 luarocks install ip-proxy-detection-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { IpProxyDetectionSDK } from 'ip-proxy-detection'
 
-const client = new IpProxyDetectionSDK({})
+const client = new IpProxyDetectionSDK({
+  apikey: process.env.IP-PROXY-DETECTION_APIKEY,
+})
 
+// Load check data
+const check = await client.Check().load({})
+console.log(check.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Check** | Looks up a single IP address and returns its proxy/VPN/abuse probability score via `GET /check.php?ip=<addr>&contact=<email>` (optionally `format=json`, `flags=`, `oflags=`). | `/check.php` |
+| **Check** |  | `/check.php` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from ipproxydetection_sdk import IpProxyDetectionSDK
 
-client = IpProxyDetectionSDK({})
+client = IpProxyDetectionSDK({
+    "apikey": os.environ.get("IP-PROXY-DETECTION_APIKEY"),
+})
 
 
 # Load a specific check
-check, err = client.Check(None).load(
-    {"id": "example_id"}, None
-)
+check, err = client.Check().load({"id": "example_id"})
+print(check)
 ```
 
 ### PHP
@@ -125,13 +119,14 @@ check, err = client.Check(None).load(
 <?php
 require_once 'ipproxydetection_sdk.php';
 
-$client = new IpProxyDetectionSDK([]);
+$client = new IpProxyDetectionSDK([
+    "apikey" => getenv("IP-PROXY-DETECTION_APIKEY"),
+]);
 
 
 // Load a specific check
-[$check, $err] = $client->Check(null)->load(
-    ["id" => "example_id"], null
-);
+[$check, $err] = $client->Check()->load(["id" => "example_id"]);
+print_r($check);
 ```
 
 ### Golang
@@ -139,8 +134,13 @@ $client = new IpProxyDetectionSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/ip-proxy-detection-sdk/go"
 
-client := sdk.NewIpProxyDetectionSDK(map[string]any{})
+client := sdk.NewIpProxyDetectionSDK(map[string]any{
+    "apikey": os.Getenv("IP-PROXY-DETECTION_APIKEY"),
+})
 
+// Load check data
+check, err := client.Check(nil).Load(map[string]any{}, nil)
+fmt.Println(check)
 ```
 
 ### Ruby
@@ -148,13 +148,14 @@ client := sdk.NewIpProxyDetectionSDK(map[string]any{})
 ```ruby
 require_relative "IpProxyDetection_sdk"
 
-client = IpProxyDetectionSDK.new({})
+client = IpProxyDetectionSDK.new({
+  "apikey" => ENV["IP-PROXY-DETECTION_APIKEY"],
+})
 
 
 # Load a specific check
-check, err = client.Check(nil).load(
-  { "id" => "example_id" }, nil
-)
+check, err = client.Check().load({ "id" => "example_id" })
+puts check
 ```
 
 ### Lua
@@ -162,13 +163,14 @@ check, err = client.Check(nil).load(
 ```lua
 local sdk = require("ip-proxy-detection_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("IP-PROXY-DETECTION_APIKEY"),
+})
 
 
 -- Load a specific check
-local check, err = client:Check(nil):load(
-  { id = "example_id" }, nil
-)
+local check, err = client:Check():load({ id = "example_id" })
+print(check)
 ```
 
 ## Unit testing in offline mode
@@ -187,25 +189,21 @@ const result = await client.Check().load({ id: 'test01' })
 ### Python
 
 ```python
-client = IpProxyDetectionSDK.test(None, None)
-result, err = client.Check(None).load(
-    {"id": "test01"}, None
-)
+client = IpProxyDetectionSDK.test()
+result, err = client.Check().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = IpProxyDetectionSDK::test(null, null);
-[$result, $err] = $client->Check(null)->load(
-    ["id" => "test01"], null
-);
+$client = IpProxyDetectionSDK::test();
+[$result, $err] = $client->Check()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Check(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -214,19 +212,15 @@ result, err := client.Check(nil).Load(
 ### Ruby
 
 ```ruby
-client = IpProxyDetectionSDK.test(nil, nil)
-result, err = client.Check(nil).load(
-  { "id" => "test01" }, nil
-)
+client = IpProxyDetectionSDK.test
+result, err = client.Check().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Check(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Check():load({ id = "test01" })
 ```
 
 ## How it works
@@ -330,16 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the IP Proxy Detection
-
-- Upstream: [https://getipintel.net/](https://getipintel.net/)
-- API docs: [https://getipintel.net/free-proxy-vpn-tor-detection-api/](https://getipintel.net/free-proxy-vpn-tor-detection-api/)
-
-- Free tier is rate-limited to roughly 15 requests/minute and 500 queries/day; higher volumes require a paid arrangement.
-- Every request must include a valid `contact` email — queries without accurate contact info are rejected.
-- Users must credit GetIPIntel and may not resell the returned data or run random/incremental IP sweeps.
-- No API key system; the contact email serves as identification.
 
 ---
 

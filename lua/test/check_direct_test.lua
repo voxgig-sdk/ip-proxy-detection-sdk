@@ -69,12 +69,14 @@ function check_direct_setup(mockres)
   local env = runner.env_override({
     ["IPPROXYDETECTION_TEST_CHECK_ENTID"] = {},
     ["IPPROXYDETECTION_TEST_LIVE"] = "FALSE",
+    ["IPPROXYDETECTION_APIKEY"] = "NONE",
   })
 
   local live = env["IPPROXYDETECTION_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["IPPROXYDETECTION_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

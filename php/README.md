@@ -1,6 +1,11 @@
 # IpProxyDetection PHP SDK
 
-The PHP SDK for the IpProxyDetection API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the IpProxyDetection API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'ipproxydetection_sdk.php';
 
-$client = new IpProxyDetectionSDK([]);
+$client = new IpProxyDetectionSDK([
+    "apikey" => getenv("IP-PROXY-DETECTION_APIKEY"),
+]);
 ```
 
 ### 3. Load a check
 
 ```php
-[$result, $err] = $client->Check(null)->load(["id" => "example_id"], null);
+[$result, $err] = $client->Check()->load(["id" => "example_id"]);
 if ($err) { throw new \Exception($err); }
 print_r($result);
 ```
@@ -72,11 +79,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = IpProxyDetectionSDK::test(null, null);
+$client = IpProxyDetectionSDK::test();
 
-[$result, $err] = $client->IpProxyDetection(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->IpProxyDetection()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -111,6 +116,7 @@ Create a `.env.local` file at the project root:
 
 ```
 IP-PROXY-DETECTION_TEST_LIVE=TRUE
+IP-PROXY-DETECTION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -133,6 +139,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
