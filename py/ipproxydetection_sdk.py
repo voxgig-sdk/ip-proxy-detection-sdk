@@ -220,25 +220,15 @@ class IpProxyDetectionSDK:
         }
 
 
-    @property
-    def check(self):
-        """Idiomatic facade: client.check.list() / client.check.load({"id": ...})."""
-        from entity.check_entity import CheckEntity
-        cached = getattr(self, "_check", None)
-        if cached is None:
-            cached = CheckEntity(self, None)
-            self._check = cached
-        return cached
-
-    def Check(self, data=None):
-        # Deprecated: use client.check instead.
+    def Check(self, data=None) -> "CheckEntity":
+        """Entity factory: client.Check().list({}) / client.Check().load({"id": ...})."""
         from entity.check_entity import CheckEntity
         return CheckEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "IpProxyDetectionSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class IpProxyDetectionSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.check_entity import CheckEntity

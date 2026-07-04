@@ -32,8 +32,9 @@ client = IpProxyDetectionSDK.new
 
 ```ruby
 begin
-  result = client.check.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Check record (raises on error).
+  check = client.Check.load({ "id" => "example_id" })
+  puts check
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = IpProxyDetectionSDK.test
+client = IpProxyDetectionSDK.test({
+  "entity" => { "check" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.check.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+check = client.Check.load({ "id" => "test01" })
+puts check
 ```
 
 ### Use a custom fetch function
@@ -223,7 +228,7 @@ API path: `/check.php`
 
 ### Check
 
-Create an instance: `const check = client.check`
+Create an instance: `check = client.Check`
 
 #### Operations
 
@@ -244,8 +249,9 @@ Create an instance: `const check = client.check`
 
 #### Example: Load
 
-```ts
-const check = await client.check.load({ id: 'check_id' })
+```ruby
+# load returns the bare Check record (raises on error).
+check = client.Check.load({ "id" => "check_id" })
 ```
 
 
@@ -320,7 +326,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-check = client.check
+check = client.Check
 check.load({ "id" => "example_id" })
 
 # check.data_get now returns the loaded check data

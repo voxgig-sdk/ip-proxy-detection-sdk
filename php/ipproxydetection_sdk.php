@@ -233,10 +233,10 @@ class IpProxyDetectionSDK
 
     private $_check = null;
 
-    // Idiomatic facade: $client->check()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Check() (PHP method
-    // names are case-insensitive).
-    public function check($data = null)
+    // Canonical facade: $client->Check()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->check()
+    // resolves here too.
+    public function Check($data = null)
     {
         require_once __DIR__ . '/entity/check_entity.php';
         if ($data === null) {

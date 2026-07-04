@@ -109,7 +109,7 @@ Alias for `IpProxyDetectionSDK.test()`.
 ## CheckEntity
 
 ```ts
-const check = client.check
+const check = client.Check()
 ```
 
 ### Fields
@@ -130,7 +130,7 @@ const check = client.check
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.check.load({ id: 'check_id' })
+const result = await client.Check().load({ id: 'check_id' })
 ```
 
 ### Common Methods

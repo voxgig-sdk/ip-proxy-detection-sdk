@@ -26,9 +26,9 @@ import { IpProxyDetectionSDK } from '@voxgig-sdk/ip-proxy-detection'
 
 const client = new IpProxyDetectionSDK()
 
-// Load check data
-const check = await client.check.load({})
-console.log(check.data)
+// Load check data (returns a Check)
+const check = await client.Check().load()
+console.log(check)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from ipproxydetection_sdk import IpProxyDetectionSDK
 client = IpProxyDetectionSDK()
 
 
-# Load a specific check
-check = client.check.load({"id": "example_id"})
+# Load a specific check (returns the record, raises on error)
+check = client.Check().load({"id": "example_id"})
 print(check)
 ```
 
@@ -98,8 +98,8 @@ require_once 'ipproxydetection_sdk.php';
 $client = new IpProxyDetectionSDK();
 
 
-// Load a specific check
-$check = $client->check()->load(["id" => "example_id"]);
+// Load a specific check (returns the bare record; throws on error)
+$check = $client->Check()->load(["id" => "example_id"]);
 print_r($check);
 ```
 
@@ -123,8 +123,8 @@ require_relative "IpProxyDetection_sdk"
 client = IpProxyDetectionSDK.new
 
 
-# Load a specific check
-check = client.check.load({ "id" => "example_id" })
+# Load a specific check (returns the bare record; raises on error)
+check = client.Check.load({ "id" => "example_id" })
 puts check
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific check
-local check, err = client:check():load({ id = "example_id" })
+local check, err = client:Check():load({ id = "example_id" })
 print(check)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = IpProxyDetectionSDK.test()
-const result = await client.check.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const check = await client.Check().load({ id: 'test01' })
+// check is a bare Check populated with mock data
+console.log(check)
 ```
 
 ### Python
 
 ```python
 client = IpProxyDetectionSDK.test()
-result = client.check.load({"id": "test01"})
+check = client.Check().load({"id": "test01"})
+print(check)
 ```
 
 ### PHP
 
 ```php
-$client = IpProxyDetectionSDK::test();
-$result = $client->check()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = IpProxyDetectionSDK::test([
+    "entity" => ["check" => ["test01" => ["id" => "test01"]]],
+]);
+$check = $client->Check()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.Check(nil).Load(
 ### Ruby
 
 ```ruby
-client = IpProxyDetectionSDK.test
-result = client.check.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = IpProxyDetectionSDK.test({
+  "entity" => { "check" => { "test01" => { "id" => "test01" } } },
+})
+check = client.Check.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:check():load({ id = "test01" })
+local result, err = client:Check():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -33,10 +33,12 @@ client = IpProxyDetectionSDK()
 
 ### 3. Load a check
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.check.load({"id": "example_id"})
-    print(result)
+    check = client.Check().load({"id": "example_id"})
+    print(check)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = IpProxyDetectionSDK.test()
 
-result = client.check.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+check = client.Check().load({"id": "test01"})
+# check contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -223,7 +226,7 @@ API path: `/check.php`
 
 ### Check
 
-Create an instance: `const check = client.check`
+Create an instance: `check = client.Check()`
 
 #### Operations
 
@@ -244,8 +247,8 @@ Create an instance: `const check = client.check`
 
 #### Example: Load
 
-```ts
-const check = await client.check.load({ id: 'check_id' })
+```python
+check = client.Check().load({"id": "check_id"})
 ```
 
 
@@ -319,7 +322,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-check = client.check
+check = client.Check()
 check.load({"id": "example_id"})
 
 # check.data_get() now returns the loaded check data

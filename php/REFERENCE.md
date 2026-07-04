@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CheckEntity
 
 ```php
-$check = $client->check();
+$check = $client->Check();
 ```
 
 ### Fields
@@ -106,7 +106,7 @@ $check = $client->check();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->check()->load(["id" => "check_id"]);
+$result = $client->Check()->load(["id" => "check_id"]);
 ```
 
 ### Common Methods

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:check():list() / client:check():load({ id = ... })
-function IpProxyDetectionSDK:check(data)
+-- Idiomatic facade: client:Check():list() / client:Check():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function IpProxyDetectionSDK:Check(data)
   local EntityMod = require("entity.check_entity")
   if data == nil then
     if self._check == nil then
@@ -253,12 +254,6 @@ function IpProxyDetectionSDK:check(data)
     end
     return self._check
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:check() instead.
-function IpProxyDetectionSDK:Check(data)
-  local EntityMod = require("entity.check_entity")
   return EntityMod.new(self, data)
 end
 

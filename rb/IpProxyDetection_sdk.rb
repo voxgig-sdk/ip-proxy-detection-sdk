@@ -208,13 +208,7 @@ class IpProxyDetectionSDK
   end
 
 
-  # Idiomatic facade: client.check.list / client.check.load({ "id" => ... })
-  def check
-    require_relative 'entity/check_entity'
-    @check ||= CheckEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.check instead.
+  # Canonical facade: client.Check.list / client.Check.load({ "id" => ... })
   def Check(data = nil)
     require_relative 'entity/check_entity'
     CheckEntity.new(self, data)

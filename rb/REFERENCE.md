@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## CheckEntity
 
 ```ruby
-check = client.check
+check = client.Check
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ check = client.check
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.check.load({ "id" => "check_id" })
+result = client.Check.load({ "id" => "check_id" })
 ```
 
 ### Common Methods

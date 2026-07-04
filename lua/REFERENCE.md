@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## CheckEntity
 
 ```lua
-local check = client:check(nil)
+local check = client:Check(nil)
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ local check = client:check(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:check():load({ id = "check_id" })
+local result, err = client:Check():load({ id = "check_id" })
 ```
 
 ### Common Methods
