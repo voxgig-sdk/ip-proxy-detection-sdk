@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:check():list() / client:check():load({ id = ... })
+function IpProxyDetectionSDK:check(data)
+  local EntityMod = require("entity.check_entity")
+  if data == nil then
+    if self._check == nil then
+      self._check = EntityMod.new(self, nil)
+    end
+    return self._check
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:check() instead.
 function IpProxyDetectionSDK:Check(data)
   local EntityMod = require("entity.check_entity")
   return EntityMod.new(self, data)

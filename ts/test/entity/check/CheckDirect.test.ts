@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'IPPROXYDETECTION_TEST_CHECK_ENTID': {},
     'IPPROXYDETECTION_TEST_LIVE': 'FALSE',
-    'IPPROXYDETECTION_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.IPPROXYDETECTION_TEST_LIVE
 
   if (live) {
     const client = new IpProxyDetectionSDK({
-      apikey: env.IPPROXYDETECTION_APIKEY,
     })
 
     let idmap: any = env['IPPROXYDETECTION_TEST_CHECK_ENTID']

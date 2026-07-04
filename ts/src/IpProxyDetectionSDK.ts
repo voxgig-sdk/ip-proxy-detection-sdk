@@ -2,6 +2,8 @@
 
 import { CheckEntity } from './entity/CheckEntity'
 
+export type * from './IpProxyDetectionTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class IpProxyDetectionSDK {
 
 
 
+  _check?: CheckEntity
+
+  // Idiomatic facade: `client.check.list()` / `client.check.load({ id })`.
+  get check(): CheckEntity {
+    return (this._check ??= new CheckEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.check` instead. */
   Check(data?: any) {
     const self = this
     return new CheckEntity(self,data)

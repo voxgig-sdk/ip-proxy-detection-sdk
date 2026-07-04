@@ -49,8 +49,7 @@ class CheckEntityTest extends TestCase
         // LOAD
         $check_ref01_ent = $client->Check(null);
         $check_ref01_match_dt0 = [];
-        [$check_ref01_data_dt0_loaded, $err] = $check_ref01_ent->load($check_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $check_ref01_data_dt0_loaded = $check_ref01_ent->load($check_ref01_match_dt0, null);
         $this->assertNotNull($check_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function check_basic_setup($extra)
         "IPPROXYDETECTION_TEST_CHECK_ENTID" => $idmap,
         "IPPROXYDETECTION_TEST_LIVE" => "FALSE",
         "IPPROXYDETECTION_TEST_EXPLAIN" => "FALSE",
-        "IPPROXYDETECTION_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function check_basic_setup($extra)
     if ($env["IPPROXYDETECTION_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["IPPROXYDETECTION_APIKEY"],
             ],
             $extra ?? [],
         ]);

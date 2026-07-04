@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Check,
+  CheckLoadMatch,
+} from '../IpProxyDetectionTypes'
 
 // TODO: needs Entity superclass
-class CheckEntity extends IpProxyDetectionEntityBase {
+class CheckEntity extends IpProxyDetectionEntityBase<Check> {
 
   constructor(client: IpProxyDetectionSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class CheckEntity extends IpProxyDetectionEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: CheckLoadMatch, ctrl?: Control): Promise<Check> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class CheckEntity extends IpProxyDetectionEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Check> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

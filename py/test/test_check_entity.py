@@ -49,8 +49,7 @@ class TestCheckEntity:
         # LOAD
         check_ref01_ent = client.Check(None)
         check_ref01_match_dt0 = {}
-        check_ref01_data_dt0_loaded, err = check_ref01_ent.load(check_ref01_match_dt0, None)
-        assert err is None
+        check_ref01_data_dt0_loaded = check_ref01_ent.load(check_ref01_match_dt0, None)
         assert check_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _check_basic_setup(extra):
         "IPPROXYDETECTION_TEST_CHECK_ENTID": idmap,
         "IPPROXYDETECTION_TEST_LIVE": "FALSE",
         "IPPROXYDETECTION_TEST_EXPLAIN": "FALSE",
-        "IPPROXYDETECTION_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _check_basic_setup(extra):
     if env.get("IPPROXYDETECTION_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("IPPROXYDETECTION_APIKEY"),
             },
             extra or {},
         ])

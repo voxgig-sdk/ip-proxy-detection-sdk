@@ -245,6 +245,9 @@ func (sdk *IpProxyDetectionSDK) Direct(fetchargs map[string]any) (map[string]any
 }
 
 
+// Check returns a Check entity bound to this client.
+// Idiomatic usage: client.Check(nil).List(nil, nil) or
+// client.Check(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *IpProxyDetectionSDK) Check(data map[string]any) IpProxyDetectionEntity {
 	return NewCheckEntityFunc(sdk, data)
 }

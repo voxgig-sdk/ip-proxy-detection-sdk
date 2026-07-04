@@ -117,7 +117,6 @@ func checkBasicSetup(extra map[string]any) *entityTestSetup {
 		"IPPROXYDETECTION_TEST_CHECK_ENTID": idmap,
 		"IPPROXYDETECTION_TEST_LIVE":      "FALSE",
 		"IPPROXYDETECTION_TEST_EXPLAIN":   "FALSE",
-		"IPPROXYDETECTION_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["IPPROXYDETECTION_TEST_CHECK_ENTID"])
@@ -128,7 +127,6 @@ func checkBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["IPPROXYDETECTION_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["IPPROXYDETECTION_APIKEY"],
 			},
 			extra,
 		})
