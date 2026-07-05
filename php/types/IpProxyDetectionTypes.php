@@ -23,7 +23,7 @@ class Check
     public ?string $status = null;
 }
 
-/** Match filter for Check#load (any subset of Check fields). */
+/** Request payload for Check#load. */
 class CheckLoadMatch
 {
     public ?string $contact = null;

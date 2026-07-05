@@ -8,7 +8,7 @@ Complete API reference for the IpProxyDetection PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/ip-proxy-detection_sdk.php';
+require_once __DIR__ . '/ipproxydetection_sdk.php';
 
 $client = new IpProxyDetectionSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = IpProxyDetectionSDK::test();
 
 Create a new `CheckEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): IpProxyDetectionUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,12 +92,12 @@ $check = $client->Check();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `contact` | ``$STRING`` | No |  |
-| `query_flag` | ``$STRING`` | No |  |
-| `query_format` | ``$STRING`` | No |  |
-| `query_ip` | ``$STRING`` | No |  |
-| `result` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `contact` | `string` | No |  |
+| `query_flag` | `string` | No |  |
+| `query_format` | `string` | No |  |
+| `query_ip` | `string` | No |  |
+| `result` | `string` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
@@ -106,24 +106,24 @@ $check = $client->Check();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Check()->load(["id" => "check_id"]);
+$result = $client->Check()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -132,7 +132,7 @@ Set the entity match criteria.
 Create a new `CheckEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

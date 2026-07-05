@@ -37,7 +37,7 @@ Check = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Check#load (any subset of Check fields).
+# Request payload for Check#load.
 #
 # @!attribute [rw] contact
 #   @return [String, nil]

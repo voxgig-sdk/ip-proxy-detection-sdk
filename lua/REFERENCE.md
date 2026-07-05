@@ -90,12 +90,12 @@ local check = client:Check(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `contact` | ``$STRING`` | No |  |
-| `query_flag` | ``$STRING`` | No |  |
-| `query_format` | ``$STRING`` | No |  |
-| `query_ip` | ``$STRING`` | No |  |
-| `result` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `contact` | `string` | No |  |
+| `query_flag` | `string` | No |  |
+| `query_format` | `string` | No |  |
+| `query_ip` | `string` | No |  |
+| `result` | `string` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
@@ -104,7 +104,7 @@ local check = client:Check(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Check():load({ id = "check_id" })
+local result, err = client:Check():load()
 ```
 
 ### Common Methods

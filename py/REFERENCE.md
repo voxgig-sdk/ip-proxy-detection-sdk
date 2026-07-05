@@ -8,7 +8,7 @@ Complete API reference for the IpProxyDetection Python SDK.
 ### Constructor
 
 ```python
-from ip-proxy-detection_sdk import IpProxyDetectionSDK
+from ipproxydetection_sdk import IpProxyDetectionSDK
 
 client = IpProxyDetectionSDK(options)
 ```
@@ -87,12 +87,12 @@ check = client.Check()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `contact` | ``$STRING`` | No |  |
-| `query_flag` | ``$STRING`` | No |  |
-| `query_format` | ``$STRING`` | No |  |
-| `query_ip` | ``$STRING`` | No |  |
-| `result` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `contact` | `str` | No |  |
+| `query_flag` | `str` | No |  |
+| `query_format` | `str` | No |  |
+| `query_ip` | `str` | No |  |
+| `result` | `str` | No |  |
+| `status` | `str` | No |  |
 
 ### Operations
 
@@ -101,7 +101,7 @@ check = client.Check()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Check().load({"id": "check_id"})
+result = client.Check().load()
 ```
 
 ### Common Methods

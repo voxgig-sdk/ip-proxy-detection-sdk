@@ -97,12 +97,12 @@ check := client.Check(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `contact` | ``$STRING`` | No |  |
-| `query_flag` | ``$STRING`` | No |  |
-| `query_format` | ``$STRING`` | No |  |
-| `query_ip` | ``$STRING`` | No |  |
-| `result` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `contact` | `string` | No |  |
+| `query_flag` | `string` | No |  |
+| `query_format` | `string` | No |  |
+| `query_ip` | `string` | No |  |
+| `result` | `string` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
@@ -111,7 +111,7 @@ check := client.Check(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Check(nil).Load(map[string]any{"id": "check_id"}, nil)
+result, err := client.Check(nil).Load(nil, nil)
 ```
 
 ### Common Methods

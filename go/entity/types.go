@@ -18,8 +18,7 @@ type Check struct {
 	Status *string `json:"status,omitempty"`
 }
 
-// CheckLoadMatch mirrors the check fields as an all-optional match
-// filter (Go analog of Partial<Check>).
+// CheckLoadMatch is the typed request payload for Check.LoadTyped.
 type CheckLoadMatch struct {
 	Contact *string `json:"contact,omitempty"`
 	QueryFlag *string `json:"query_flag,omitempty"`

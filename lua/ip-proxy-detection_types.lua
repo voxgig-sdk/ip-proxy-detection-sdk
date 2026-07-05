@@ -15,6 +15,12 @@
 ---@field status? string
 
 ---@class CheckLoadMatch
+---@field contact? string
+---@field query_flag? string
+---@field query_format? string
+---@field query_ip? string
+---@field result? string
+---@field status? string
 
 local M = {}
 

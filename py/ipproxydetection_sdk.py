@@ -221,7 +221,7 @@ class IpProxyDetectionSDK:
 
 
     def Check(self, data=None) -> "CheckEntity":
-        """Entity factory: client.Check().list({}) / client.Check().load({"id": ...})."""
+        """Entity factory: client.Check().list() / client.Check().load({"id": ...})."""
         from entity.check_entity import CheckEntity
         return CheckEntity(self, data)
 

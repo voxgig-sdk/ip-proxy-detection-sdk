@@ -8,7 +8,7 @@ Complete API reference for the IpProxyDetection Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'ip-proxy-detection_sdk'
+require_relative 'IpProxyDetection_sdk'
 
 client = IpProxyDetectionSDK.new(options)
 ```
@@ -93,12 +93,12 @@ check = client.Check
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `contact` | ``$STRING`` | No |  |
-| `query_flag` | ``$STRING`` | No |  |
-| `query_format` | ``$STRING`` | No |  |
-| `query_ip` | ``$STRING`` | No |  |
-| `result` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `contact` | `String` | No |  |
+| `query_flag` | `String` | No |  |
+| `query_format` | `String` | No |  |
+| `query_ip` | `String` | No |  |
+| `result` | `String` | No |  |
+| `status` | `String` | No |  |
 
 ### Operations
 
@@ -107,7 +107,7 @@ check = client.Check
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Check.load({ "id" => "check_id" })
+result = client.Check.load()
 ```
 
 ### Common Methods

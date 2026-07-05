@@ -14,5 +14,12 @@ export interface Check {
   status?: string
 }
 
-export type CheckLoadMatch = Partial<Check>
+export interface CheckLoadMatch {
+  contact?: string
+  query_flag?: string
+  query_format?: string
+  query_ip?: string
+  result?: string
+  status?: string
+}
 

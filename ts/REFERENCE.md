@@ -116,12 +116,12 @@ const check = client.Check()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `contact` | ``$STRING`` | No |  |
-| `query_flag` | ``$STRING`` | No |  |
-| `query_format` | ``$STRING`` | No |  |
-| `query_ip` | ``$STRING`` | No |  |
-| `result` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `contact` | `string` | No |  |
+| `query_flag` | `string` | No |  |
+| `query_format` | `string` | No |  |
+| `query_ip` | `string` | No |  |
+| `result` | `string` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
@@ -130,7 +130,7 @@ const check = client.Check()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Check().load({ id: 'check_id' })
+const result = await client.Check().load()
 ```
 
 ### Common Methods
