@@ -91,6 +91,7 @@ same parameters as `Direct()`.
 
 ```go
 check := client.Check(nil)
+fmt.Println(check.GetName()) // "check"
 ```
 
 ### Fields
@@ -112,6 +113,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Check(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -280,15 +277,18 @@
           "url": "https://getipintel.net/free-proxy-vpn-tor-detection-api/"
         },
         "description": "GetIPIntel.net provides a free API that detects proxy, VPN, and malicious IP addresses to prevent fraud and abuse on online platforms. It uses advanced algorithms to analyze IP behavior and issue a probability score indicating the likelihood of an IP being fraudulent or abusive.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "IP Proxy Detection API Server",
             "url": "http://check.getipintel.net"
           }
         ],
+        "summary": "GetIPIntel.net provides a free API that detects proxy, VPN, and malicious IP addresses to prevent fraud and abuse on online platforms.",
         "termsOfService": "https://getipintel.net/free-proxy-vpn-tor-detection-api/",
         "title": "IP Proxy Detection",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "http://check.getipintel.net"
       },
       "option": {},
       "target": {
@@ -341,6 +341,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -391,6 +394,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

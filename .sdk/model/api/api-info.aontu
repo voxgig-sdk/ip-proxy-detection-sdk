@@ -15,10 +15,10 @@ main: {
           url: "http://check.getipintel.net"
         }
       ]
+      summary: "GetIPIntel.net provides a free API that detects proxy, VPN, and malicious IP addresses to prevent fraud and abuse on online platforms."
       termsOfService: "https://getipintel.net/free-proxy-vpn-tor-detection-api/"
       title: "IP Proxy Detection"
       version: "1.0.0"
+      website: "http://check.getipintel.net"
     }
   }
-}
-
