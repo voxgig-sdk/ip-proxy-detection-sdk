@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- IpProxyDetection SDK exists test
 
 local sdk = require("ip-proxy-detection_sdk")
 
