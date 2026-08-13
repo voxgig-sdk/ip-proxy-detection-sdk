@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from ipproxydetection_sdk.utility.voxgig_struct import voxgig_struct as vs
 from ipproxydetection_sdk import IpProxyDetectionSDK
-from core import helpers
+from ipproxydetection_sdk.core import helpers
 from test import runner
 
 
@@ -62,11 +62,11 @@ def _check_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "IPPROXYDETECTION_TEST_CHECK_ENTID": {},
-        "IPPROXYDETECTION_TEST_LIVE": "FALSE",
+        "IP_PROXY_DETECTION_TEST_CHECK_ENTID": {},
+        "IP_PROXY_DETECTION_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("IPPROXYDETECTION_TEST_LIVE") == "TRUE"
+    live = env.get("IP_PROXY_DETECTION_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

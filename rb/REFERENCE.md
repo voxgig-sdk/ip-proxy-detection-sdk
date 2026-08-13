@@ -94,9 +94,9 @@ check = client.Check
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `contact` | `String` | No |  |
-| `query_flag` | `String` | No |  |
-| `query_format` | `String` | No |  |
-| `query_ip` | `String` | No |  |
+| `queryFlags` | `String` | No |  |
+| `queryFormat` | `String` | No |  |
+| `queryIP` | `String` | No |  |
 | `result` | `String` | No |  |
 | `status` | `String` | No |  |
 

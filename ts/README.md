@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = IpProxyDetectionSDK.test()
 
 const check = await client.Check().load()
-// check is a bare entity populated with mock response data
+// check is the entity, populated with mock response data
+// — call check.data() for the record itself
 console.log(check)
 ```
 
@@ -285,9 +286,9 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `contact` |  |
-| `query_flag` |  |
-| `query_format` |  |
-| `query_ip` |  |
+| `queryFlags` |  |
+| `queryFormat` |  |
+| `queryIP` |  |
 | `result` |  |
 | `status` |  |
 
@@ -315,9 +316,9 @@ Create an instance: `const check = client.Check()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `contact` | `string` |  |
-| `query_flag` | `string` |  |
-| `query_format` | `string` |  |
-| `query_ip` | `string` |  |
+| `queryFlags` | `string` |  |
+| `queryFormat` | `string` |  |
+| `queryIP` | `string` |  |
 | `result` | `string` |  |
 | `status` | `string` |  |
 

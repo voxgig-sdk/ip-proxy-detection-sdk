@@ -39,21 +39,21 @@ class IpProxyDetectionConfig
             ],
             [
               'active' => true,
-              'name' => 'query_flag',
+              'name' => 'queryFlags',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'query_format',
+              'name' => 'queryFormat',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
             ],
             [
               'active' => true,
-              'name' => 'query_ip',
+              'name' => 'queryIP',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 3,
@@ -130,6 +130,7 @@ class IpProxyDetectionConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/check.php',
                   'parts' => [

@@ -16,11 +16,11 @@
 import pytest
 
 from ipproxydetection_sdk import IpProxyDetectionSDK
-from core.error import IpProxyDetectionError
-from core.result import IpProxyDetectionResult
-from core.response import IpProxyDetectionResponse
-from core.spec import IpProxyDetectionSpec
-from feature.base_feature import IpProxyDetectionBaseFeature
+from ipproxydetection_sdk.core.error import IpProxyDetectionError
+from ipproxydetection_sdk.core.result import IpProxyDetectionResult
+from ipproxydetection_sdk.core.response import IpProxyDetectionResponse
+from ipproxydetection_sdk.core.spec import IpProxyDetectionSpec
+from ipproxydetection_sdk.feature.base_feature import IpProxyDetectionBaseFeature
 
 
 def _client():

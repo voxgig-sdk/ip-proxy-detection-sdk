@@ -34,7 +34,7 @@ client = IpProxyDetectionSDK.new
 
 ```ruby
 begin
-  # load returns the bare Check record (raises on error).
+  # load returns the ENTITY — call data_get for the Check record (raises on error).
   check = client.Check.load()
   puts check
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = IpProxyDetectionSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 check = client.Check.load()
 puts check
 ```
@@ -235,9 +236,9 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `contact` |  |
-| `query_flag` |  |
-| `query_format` |  |
-| `query_ip` |  |
+| `queryFlags` |  |
+| `queryFormat` |  |
+| `queryIP` |  |
 | `result` |  |
 | `status` |  |
 
@@ -265,16 +266,16 @@ Create an instance: `check = client.Check`
 | Field | Type | Description |
 | --- | --- | --- |
 | `contact` | `String` |  |
-| `query_flag` | `String` |  |
-| `query_format` | `String` |  |
-| `query_ip` | `String` |  |
+| `queryFlags` | `String` |  |
+| `queryFormat` | `String` |  |
+| `queryIP` | `String` |  |
 | `result` | `String` |  |
 | `status` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Check record (raises on error).
+# load returns the ENTITY — call data_get for the Check record (raises on error).
 check = client.Check.load()
 ```
 

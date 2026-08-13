@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import IpProxyDetectionControl
-from core.error import IpProxyDetectionError
-from core.result import IpProxyDetectionResult
-from core.spec import IpProxyDetectionSpec
+from ipproxydetection_sdk.config import make_config
+from ipproxydetection_sdk.features import _make_feature
+from ipproxydetection_sdk.core.control import IpProxyDetectionControl
+from ipproxydetection_sdk.core.error import IpProxyDetectionError
+from ipproxydetection_sdk.core.result import IpProxyDetectionResult
+from ipproxydetection_sdk.core.spec import IpProxyDetectionSpec
 
 
 # True when this SDK was generated with the named feature.

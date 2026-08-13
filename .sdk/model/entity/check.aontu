@@ -11,17 +11,17 @@ main: kit: entity: check: {
       type: "`$STRING`"
     }
     {
-      name: "query_flag"
+      name: "queryFlags"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "query_format"
+      name: "queryFormat"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "query_ip"
+      name: "queryIP"
       req: false
       type: "`$STRING`"
     }

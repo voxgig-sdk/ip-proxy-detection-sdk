@@ -23,8 +23,8 @@ module IpProxyDetectionTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("IPPROXYDETECTION_TEST_LIVE")
-    override = getenv("IPPROXYDETECTION_TEST_OVERRIDE")
+    live = getenv("IP_PROXY_DETECTION_TEST_LIVE")
+    override = getenv("IP_PROXY_DETECTION_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module IpProxyDetectionTestRunner
       end
     end
 
-    explain = getenv("IPPROXYDETECTION_TEST_EXPLAIN")
-    m["IPPROXYDETECTION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("IP_PROXY_DETECTION_TEST_EXPLAIN")
+    m["IP_PROXY_DETECTION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

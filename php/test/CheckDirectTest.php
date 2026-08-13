@@ -72,11 +72,11 @@ function check_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "IPPROXYDETECTION_TEST_CHECK_ENTID" => [],
-        "IPPROXYDETECTION_TEST_LIVE" => "FALSE",
+        "IP_PROXY_DETECTION_TEST_CHECK_ENTID" => [],
+        "IP_PROXY_DETECTION_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["IPPROXYDETECTION_TEST_LIVE"] === "TRUE";
+    $live = $env["IP_PROXY_DETECTION_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

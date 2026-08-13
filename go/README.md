@@ -259,9 +259,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"contact"` |  |
-| `"query_flag"` |  |
-| `"query_format"` |  |
-| `"query_ip"` |  |
+| `"queryFlags"` |  |
+| `"queryFormat"` |  |
+| `"queryIP"` |  |
 | `"result"` |  |
 | `"status"` |  |
 
@@ -289,9 +289,9 @@ Create an instance: `check := client.Check(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `contact` | `string` |  |
-| `query_flag` | `string` |  |
-| `query_format` | `string` |  |
-| `query_ip` | `string` |  |
+| `queryFlags` | `string` |  |
+| `queryFormat` | `string` |  |
+| `queryIP` | `string` |  |
 | `result` | `string` |  |
 | `status` | `string` |  |
 

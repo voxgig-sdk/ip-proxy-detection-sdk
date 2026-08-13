@@ -88,9 +88,9 @@ check = client.Check()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `contact` | `str` | No |  |
-| `query_flag` | `str` | No |  |
-| `query_format` | `str` | No |  |
-| `query_ip` | `str` | No |  |
+| `queryFlags` | `str` | No |  |
+| `queryFormat` | `str` | No |  |
+| `queryIP` | `str` | No |  |
 | `result` | `str` | No |  |
 | `status` | `str` | No |  |
 

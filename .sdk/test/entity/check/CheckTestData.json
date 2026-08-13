@@ -3,27 +3,27 @@
     "check": {
       "CHECK00": {
         "contact": "s3c",
-        "query_flag": "s3d",
-        "query_format": "s3e",
-        "query_ip": "s3f",
+        "queryFlags": "s3d",
+        "queryFormat": "s3e",
+        "queryIP": "s3f",
         "result": "s40",
         "status": "s41",
         "id": "CHECK00"
       },
       "CHECK01": {
         "contact": "s78",
-        "query_flag": "s79",
-        "query_format": "s7a",
-        "query_ip": "s7b",
+        "queryFlags": "s79",
+        "queryFormat": "s7a",
+        "queryIP": "s7b",
         "result": "s7c",
         "status": "s7d",
         "id": "CHECK01"
       },
       "CHECK02": {
         "contact": "sb4",
-        "query_flag": "sb5",
-        "query_format": "sb6",
-        "query_ip": "sb7",
+        "queryFlags": "sb5",
+        "queryFormat": "sb6",
+        "queryIP": "sb7",
         "result": "sb8",
         "status": "sb9",
         "id": "CHECK02"
@@ -34,9 +34,9 @@
     "check": {
       "check_ref01": {
         "contact": "sf0",
-        "query_flag": "sf1",
-        "query_format": "sf2",
-        "query_ip": "sf3",
+        "queryFlags": "sf1",
+        "queryFormat": "sf2",
+        "queryIP": "sf3",
         "result": "sf4",
         "status": "sf5"
       }

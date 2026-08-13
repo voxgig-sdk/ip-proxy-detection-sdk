@@ -16,9 +16,9 @@ declare(strict_types=1);
 class Check
 {
     public ?string $contact = null;
-    public ?string $query_flag = null;
-    public ?string $query_format = null;
-    public ?string $query_ip = null;
+    public ?string $queryFlags = null;
+    public ?string $queryFormat = null;
+    public ?string $queryIP = null;
     public ?string $result = null;
     public ?string $status = null;
 }
@@ -27,9 +27,9 @@ class Check
 class CheckLoadMatch
 {
     public ?string $contact = null;
-    public ?string $query_flag = null;
-    public ?string $query_format = null;
-    public ?string $query_ip = null;
+    public ?string $queryFlags = null;
+    public ?string $queryFormat = null;
+    public ?string $queryIP = null;
     public ?string $result = null;
     public ?string $status = null;
 }

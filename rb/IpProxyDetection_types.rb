@@ -13,13 +13,13 @@
 # @!attribute [rw] contact
 #   @return [String, nil]
 #
-# @!attribute [rw] query_flag
+# @!attribute [rw] queryFlags
 #   @return [String, nil]
 #
-# @!attribute [rw] query_format
+# @!attribute [rw] queryFormat
 #   @return [String, nil]
 #
-# @!attribute [rw] query_ip
+# @!attribute [rw] queryIP
 #   @return [String, nil]
 #
 # @!attribute [rw] result
@@ -29,9 +29,9 @@
 #   @return [String, nil]
 Check = Struct.new(
   :contact,
-  :query_flag,
-  :query_format,
-  :query_ip,
+  :queryFlags,
+  :queryFormat,
+  :queryIP,
   :result,
   :status,
   keyword_init: true
@@ -42,13 +42,13 @@ Check = Struct.new(
 # @!attribute [rw] contact
 #   @return [String, nil]
 #
-# @!attribute [rw] query_flag
+# @!attribute [rw] queryFlags
 #   @return [String, nil]
 #
-# @!attribute [rw] query_format
+# @!attribute [rw] queryFormat
 #   @return [String, nil]
 #
-# @!attribute [rw] query_ip
+# @!attribute [rw] queryIP
 #   @return [String, nil]
 #
 # @!attribute [rw] result
@@ -58,9 +58,9 @@ Check = Struct.new(
 #   @return [String, nil]
 CheckLoadMatch = Struct.new(
   :contact,
-  :query_flag,
-  :query_format,
-  :query_ip,
+  :queryFlags,
+  :queryFormat,
+  :queryIP,
   :result,
   :status,
   keyword_init: true

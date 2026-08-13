@@ -7,18 +7,18 @@
 
 export interface Check {
   contact?: string
-  query_flag?: string
-  query_format?: string
-  query_ip?: string
+  queryFlags?: string
+  queryFormat?: string
+  queryIP?: string
   result?: string
   status?: string
 }
 
 export interface CheckLoadMatch {
   contact?: string
-  query_flag?: string
-  query_format?: string
-  query_ip?: string
+  queryFlags?: string
+  queryFormat?: string
+  queryIP?: string
   result?: string
   status?: string
 }

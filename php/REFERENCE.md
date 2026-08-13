@@ -93,9 +93,9 @@ $check = $client->Check();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `contact` | `string` | No |  |
-| `query_flag` | `string` | No |  |
-| `query_format` | `string` | No |  |
-| `query_ip` | `string` | No |  |
+| `queryFlags` | `string` | No |  |
+| `queryFormat` | `string` | No |  |
+| `queryIP` | `string` | No |  |
 | `result` | `string` | No |  |
 | `status` | `string` | No |  |
 

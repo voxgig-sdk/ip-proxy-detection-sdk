@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# IpProxyDetection SDK exists test
 
 import pytest
 from ipproxydetection_sdk import IpProxyDetectionSDK

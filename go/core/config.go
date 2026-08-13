@@ -33,21 +33,21 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "query_flag",
+						"name": "queryFlags",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "query_format",
+						"name": "queryFormat",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "query_ip",
+						"name": "queryIP",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
@@ -124,6 +124,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/check.php",
 								"parts": []any{
@@ -145,7 +146,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
