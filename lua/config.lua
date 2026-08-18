@@ -1,5 +1,8 @@
 -- IpProxyDetection SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -25,46 +28,28 @@ local function make_config()
       ["check"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "contact",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "queryFlags",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "queryFormat",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "queryIP",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "result",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "status",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 5,
           },
         },
         ["name"] = "check",
@@ -74,11 +59,9 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "your.email@example.com",
                       ["kind"] = "query",
                       ["name"] = "contact",
@@ -87,25 +70,20 @@ local function make_config()
                       ["type"] = "`$STRING`",
                     },
                     {
-                      ["active"] = true,
                       ["example"] = "m",
                       ["kind"] = "query",
                       ["name"] = "flag",
                       ["orig"] = "flag",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                     {
-                      ["active"] = true,
                       ["example"] = "json",
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                     {
-                      ["active"] = true,
                       ["example"] = "8.8.8.8",
                       ["kind"] = "query",
                       ["name"] = "ip",
@@ -114,12 +92,10 @@ local function make_config()
                       ["type"] = "`$STRING`",
                     },
                     {
-                      ["active"] = true,
                       ["example"] = "b",
                       ["kind"] = "query",
                       ["name"] = "oflag",
                       ["orig"] = "oflag",
-                      ["reqd"] = false,
                       ["type"] = "`$STRING`",
                     },
                   },
@@ -143,10 +119,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {

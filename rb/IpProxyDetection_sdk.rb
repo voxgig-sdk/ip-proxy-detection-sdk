@@ -28,7 +28,7 @@ class IpProxyDetectionSDK
     utility = IpProxyDetectionUtility.new
     @_utility = utility
 
-    config = IpProxyDetectionConfig.make_config
+    config = IpProxyDetectionConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

@@ -40,7 +40,7 @@ class IpProxyDetectionSDK
         $utility = new IpProxyDetectionUtility();
         $this->_utility = $utility;
 
-        $config = IpProxyDetectionConfig::make_config();
+        $config = IpProxyDetectionConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'http://check.getipintel.net',
+    base: "http://check.getipintel.net",
 
     headers: {
       "content-type": "application/json"
@@ -55,46 +55,28 @@ class Config {
     "check": {
       "fields": [
         {
-          "active": true,
           "name": "contact",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "queryFlags",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "queryFormat",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "queryIP",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "result",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "check",
@@ -104,11 +86,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "your.email@example.com",
                     "kind": "query",
                     "name": "contact",
@@ -117,25 +97,20 @@ class Config {
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "m",
                     "kind": "query",
                     "name": "flag",
                     "orig": "flag",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "json",
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "8.8.8.8",
                     "kind": "query",
                     "name": "ip",
@@ -144,12 +119,10 @@ class Config {
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "b",
                     "kind": "query",
                     "name": "oflag",
                     "orig": "oflag",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -172,11 +145,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
