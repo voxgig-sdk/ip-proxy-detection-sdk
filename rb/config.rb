@@ -19,6 +19,9 @@ module IpProxyDetectionConfig
     {
       "main" => {
         "name" => "IpProxyDetection",
+        "slug" => "ip-proxy-detection",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {

@@ -33,6 +33,9 @@ class IpProxyDetectionConfig
         return [
             "main" => [
                 "name" => "IpProxyDetection",
+                "slug" => "ip-proxy-detection",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
