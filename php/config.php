@@ -42,6 +42,7 @@ class IpProxyDetectionConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [

@@ -28,6 +28,7 @@ module IpProxyDetectionConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
