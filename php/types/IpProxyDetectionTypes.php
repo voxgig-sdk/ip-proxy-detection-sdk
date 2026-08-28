@@ -26,11 +26,10 @@ class Check
 /** Request payload for Check#load. */
 class CheckLoadMatch
 {
-    public ?string $contact = null;
-    public ?string $queryFlags = null;
-    public ?string $queryFormat = null;
-    public ?string $queryIP = null;
-    public ?string $result = null;
-    public ?string $status = null;
+    public string $contact;
+    public ?string $flag = null;
+    public ?string $format = null;
+    public string $ip;
+    public ?string $oflag = null;
 }
 

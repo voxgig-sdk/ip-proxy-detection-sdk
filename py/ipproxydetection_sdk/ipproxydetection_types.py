@@ -25,10 +25,12 @@ class Check(TypedDict, total=False):
     status: str
 
 
-class CheckLoadMatch(TypedDict, total=False):
+class CheckLoadMatchRequired(TypedDict):
     contact: str
-    queryFlags: str
-    queryFormat: str
-    queryIP: str
-    result: str
-    status: str
+    ip: str
+
+
+class CheckLoadMatch(CheckLoadMatchRequired, total=False):
+    flag: str
+    format: str
+    oflag: str

@@ -40,29 +40,25 @@ Check = Struct.new(
 # Request payload for Check#load.
 #
 # @!attribute [rw] contact
+#   @return [String]
+#
+# @!attribute [rw] flag
 #   @return [String, nil]
 #
-# @!attribute [rw] queryFlags
+# @!attribute [rw] format
 #   @return [String, nil]
 #
-# @!attribute [rw] queryFormat
-#   @return [String, nil]
+# @!attribute [rw] ip
+#   @return [String]
 #
-# @!attribute [rw] queryIP
-#   @return [String, nil]
-#
-# @!attribute [rw] result
-#   @return [String, nil]
-#
-# @!attribute [rw] status
+# @!attribute [rw] oflag
 #   @return [String, nil]
 CheckLoadMatch = Struct.new(
   :contact,
-  :queryFlags,
-  :queryFormat,
-  :queryIP,
-  :result,
-  :status,
+  :flag,
+  :format,
+  :ip,
+  :oflag,
   keyword_init: true
 )
 

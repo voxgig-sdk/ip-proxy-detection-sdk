@@ -15,12 +15,11 @@
 ---@field status? string
 
 ---@class CheckLoadMatch
----@field contact? string
----@field queryFlags? string
----@field queryFormat? string
----@field queryIP? string
----@field result? string
----@field status? string
+---@field contact string
+---@field flag? string
+---@field format? string
+---@field ip string
+---@field oflag? string
 
 local M = {}
 

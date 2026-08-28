@@ -36,7 +36,7 @@ local client = sdk.new()
 ### 3. Load a check
 
 ```lua
-local check, err = client:Check():load()
+local check, err = client:Check():load({ contact = "example_contact", ip = "example_ip" })
 if err then error(err) end
 print(check)
 ```
@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local check, err = client:Check():load()
+local check, err = client:Check():load({ contact = "example", ip = "example" })
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Check():load()
+local result, err = client:Check():load({ contact = "example", ip = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -265,8 +265,31 @@ Create an instance: `local check = client:Check(nil)`
 #### Example: Load
 
 ```lua
-local check, err = client:Check():load()
+local check, err = client:Check():load({ contact = "contact", ip = "ip" })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -346,7 +369,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local check = client:Check()
-check:load()
+check:load({ contact = "example", ip = "example" })
 
 -- check:data_get() now returns the check data from the last load
 -- check:match_get() returns the last match criteria

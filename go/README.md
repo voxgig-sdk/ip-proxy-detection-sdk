@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single check — the value is the loaded record.
-    check, err := client.Check(nil).Load(nil, nil)
+    check, err := client.Check(nil).Load(map[string]any{"contact": "example_contact", "ip": "example_ip"}, nil)
     if err != nil {
         panic(err)
     }
@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-check, err := client.Check(nil).Load(nil, nil)
+check, err := client.Check(nil).Load(map[string]any{"contact": "example", "ip": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 check, err := client.Check(nil).Load(
-    nil, nil,
+    map[string]any{"contact": "example", "ip": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -298,12 +298,35 @@ Create an instance: `check := client.Check(nil)`
 #### Example: Load
 
 ```go
-check, err := client.Check(nil).Load(nil, nil)
+check, err := client.Check(nil).Load(map[string]any{"contact": "contact", "ip": "ip"}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(check) // the loaded record
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -380,7 +403,7 @@ stores the returned data and match criteria internally.
 
 ```go
 check := client.Check(nil)
-check.Load(nil, nil)
+check.Load(map[string]any{"contact": "example", "ip": "example"}, nil)
 
 // check.Data() now returns the check data from the last load
 // check.Match() returns the last match criteria

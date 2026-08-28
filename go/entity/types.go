@@ -24,12 +24,11 @@ type Check struct {
 
 // CheckLoadMatch is the typed request payload for Check.LoadTyped.
 type CheckLoadMatch struct {
-	Contact *string `json:"contact,omitempty"`
-	QueryFlags *string `json:"queryFlags,omitempty"`
-	QueryFormat *string `json:"queryFormat,omitempty"`
-	QueryIP *string `json:"queryIP,omitempty"`
-	Result *string `json:"result,omitempty"`
-	Status *string `json:"status,omitempty"`
+	Contact string `json:"contact"`
+	Flag *string `json:"flag,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Ip string `json:"ip"`
+	Oflag *string `json:"oflag,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

@@ -15,11 +15,10 @@ export interface Check {
 }
 
 export interface CheckLoadMatch {
-  contact?: string
-  queryFlags?: string
-  queryFormat?: string
-  queryIP?: string
-  result?: string
-  status?: string
+  contact: string
+  flag?: string
+  format?: string
+  ip: string
+  oflag?: string
 }
 
