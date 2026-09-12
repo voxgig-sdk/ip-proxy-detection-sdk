@@ -89,8 +89,10 @@ main: kit: entity: check: {
           }
           method: "GET"
           orig: "/check.php"
-          parts: [
-            "check.php"
+          segments: [
+            {
+              lit: "check.php"
+            }
           ]
           select: {
             exist: [

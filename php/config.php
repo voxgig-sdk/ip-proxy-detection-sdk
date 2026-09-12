@@ -133,8 +133,10 @@ class IpProxyDetectionConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/check.php',
-                  'parts' => [
-                    'check.php',
+                  'segments' => [
+                    [
+                      'lit' => 'check.php',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -148,6 +150,9 @@ class IpProxyDetectionConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'check.php',
                   ],
                 ],
               ],

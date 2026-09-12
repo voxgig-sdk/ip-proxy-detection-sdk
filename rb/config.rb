@@ -119,8 +119,10 @@ module IpProxyDetectionConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/check.php",
-                  "parts" => [
-                    "check.php",
+                  "segments" => [
+                    {
+                      "lit" => "check.php",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -135,6 +137,9 @@ module IpProxyDetectionConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "check.php",
+                  ],
                 },
               ],
             },
