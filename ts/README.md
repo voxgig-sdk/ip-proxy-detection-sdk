@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { IpProxyDetectionSDK } from '@voxgig-sdk/ip-proxy-detection'
+import { IpProxyDetectionSDK } from '@voxgig-sdk/ip-proxy-detection-sdk'
 
 const client = new IpProxyDetectionSDK()
 ```
@@ -411,7 +411,7 @@ ip-proxy-detection/
 Import the SDK from the package root:
 
 ```ts
-import { IpProxyDetectionSDK } from '@voxgig-sdk/ip-proxy-detection'
+import { IpProxyDetectionSDK } from '@voxgig-sdk/ip-proxy-detection-sdk'
 ```
 
 ### Entity state

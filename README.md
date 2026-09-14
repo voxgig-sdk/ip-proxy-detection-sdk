@@ -105,7 +105,7 @@ local result, err = client:Check():load({ contact = "example", ip = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/ip-proxy-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/releases) |
+| TypeScript | `@voxgig-sdk/ip-proxy-detection-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/releases) |
 | Python | `voxgig-sdk-ip-proxy-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/releases) |
 | PHP | `voxgig-sdk/ip-proxy-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/ip-proxy-detection-sdk/go` | `go get github.com/voxgig-sdk/ip-proxy-detection-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Check():load({ contact = "example", ip = "example" })
 ### TypeScript
 
 ```ts
-import { IpProxyDetectionSDK } from '@voxgig-sdk/ip-proxy-detection'
+import { IpProxyDetectionSDK } from '@voxgig-sdk/ip-proxy-detection-sdk'
 
 const client = new IpProxyDetectionSDK()
 

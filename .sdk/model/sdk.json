@@ -868,7 +868,7 @@
             "registry": {
               "active": false,
               "name": "npm",
-              "package": "",
+              "package": "@voxgig-sdk/ip-proxy-detection-sdk",
               "state": "pending",
               "url": "https://registry.npmjs.org",
               "vault": {
