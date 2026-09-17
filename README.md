@@ -105,12 +105,12 @@ local result, err = client:Check():load({ contact = "example", ip = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/ip-proxy-detection-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/releases) |
-| Python | `voxgig-sdk-ip-proxy-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/releases) |
-| PHP | `voxgig-sdk/ip-proxy-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/releases) |
+| TypeScript | `@voxgig-sdk/ip-proxy-detection-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/tags) |
+| Python | `voxgig-sdk-ip-proxy-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/tags) |
+| PHP | `voxgig-sdk/ip-proxy-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/ip-proxy-detection-sdk/go` | `go get github.com/voxgig-sdk/ip-proxy-detection-sdk/go@latest` |
-| Ruby | `voxgig-sdk-ip-proxy-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/releases) |
-| Lua | `voxgig-sdk-ip-proxy-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/releases) |
+| Ruby | `voxgig-sdk-ip-proxy-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/tags) |
+| Lua | `voxgig-sdk-ip-proxy-detection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-proxy-detection-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/ip-proxy-detection-sdk/go-cli` | `go install github.com/voxgig-sdk/ip-proxy-detection-sdk/go-cli/cmd/ip-proxy-detection@latest` |
 | Go MCP server | `github.com/voxgig-sdk/ip-proxy-detection-sdk/go-mcp` | `go get github.com/voxgig-sdk/ip-proxy-detection-sdk/go-mcp@latest` |
 
