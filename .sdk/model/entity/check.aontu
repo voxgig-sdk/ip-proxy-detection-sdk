@@ -1,0 +1,128 @@
+# Entity: check
+
+main: kit: entity: check: {
+
+  alias: field: {}
+
+  fields: {
+    contact: {
+      h: "Contact"
+      n: "contact"
+      r: false
+      t: "`$STRING`"
+    }
+    queryFlags: {
+      h: "Query Flags"
+      n: "queryFlags"
+      r: false
+      t: "`$STRING`"
+    }
+    queryFormat: {
+      h: "Query Format"
+      n: "queryFormat"
+      r: false
+      t: "`$STRING`"
+    }
+    queryIP: {
+      h: "Query Ip"
+      n: "queryIP"
+      r: false
+      t: "`$STRING`"
+    }
+    result: {
+      h: "Result"
+      n: "result"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "check"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /check.php"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "your.email@example.com"
+                k: "query"
+                n: "contact"
+                or: "contact"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "m"
+                k: "query"
+                n: "flag"
+                or: "flag"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "json"
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "8.8.8.8"
+                k: "query"
+                n: "ip"
+                or: "ip"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "b"
+                k: "query"
+                n: "oflag"
+                or: "oflag"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/check.php"
+          q: {
+            exist: [
+              "contact"
+              "flag"
+              "format"
+              "ip"
+              "oflag"
+            ]
+          }
+          s: [
+            {
+              lit: "check.php"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

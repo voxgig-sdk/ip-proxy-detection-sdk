@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -114,26 +107,32 @@ class Config {
             "fields": [
                 {
                     "name": "contact",
+                    "title": "Contact",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "queryFlags",
+                    "title": "Query Flags",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "queryFormat",
+                    "title": "Query Format",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "queryIP",
+                    "title": "Query Ip",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "result",
+                    "title": "Result",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "status",
+                    "title": "Status",
                     "type": "`$STRING`"
                 }
             ],
@@ -144,47 +143,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "your.email@example.com",
-                                        "kind": "query",
-                                        "name": "contact",
-                                        "orig": "contact",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "m",
-                                        "kind": "query",
-                                        "name": "flag",
-                                        "orig": "flag",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "json",
-                                        "kind": "query",
-                                        "name": "format",
-                                        "orig": "format",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "8.8.8.8",
-                                        "kind": "query",
-                                        "name": "ip",
-                                        "orig": "ip",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "b",
-                                        "kind": "query",
-                                        "name": "oflag",
-                                        "orig": "oflag",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/check.php",
@@ -193,6 +151,55 @@ class Config {
                                     "lit": "check.php"
                                 }
                             ],
+                            "parts": [
+                                "check.php"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "contact",
+                                        "orig": "contact",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true,
+                                        "example": "your.email@example.com"
+                                    },
+                                    {
+                                        "name": "flag",
+                                        "orig": "flag",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "m"
+                                    },
+                                    {
+                                        "name": "format",
+                                        "orig": "format",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "json"
+                                    },
+                                    {
+                                        "name": "ip",
+                                        "orig": "ip",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true,
+                                        "example": "8.8.8.8"
+                                    },
+                                    {
+                                        "name": "oflag",
+                                        "orig": "oflag",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "b"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "contact",
@@ -201,14 +208,7 @@ class Config {
                                     "ip",
                                     "oflag"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "check.php"
-                            ]
+                            }
                         }
                     ]
                 }

@@ -1,7 +1,7 @@
 // Typed models for the IpProxyDetection SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,12 +14,6 @@ import (
 
 // Check is the typed data model for the check entity.
 type Check struct {
-	Contact *string `json:"contact,omitempty"`
-	QueryFlags *string `json:"queryFlags,omitempty"`
-	QueryFormat *string `json:"queryFormat,omitempty"`
-	QueryIP *string `json:"queryIP,omitempty"`
-	Result *string `json:"result,omitempty"`
-	Status *string `json:"status,omitempty"`
 }
 
 // CheckLoadMatch is the typed request payload for Check.LoadTyped.

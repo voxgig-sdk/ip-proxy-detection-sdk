@@ -91,26 +91,32 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "contact",
+						"title": "Contact",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "queryFlags",
+						"title": "Query Flags",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "queryFormat",
+						"title": "Query Format",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "queryIP",
+						"title": "Query Ip",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "result",
+						"title": "Result",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "status",
+						"title": "Status",
 						"type": "`$STRING`",
 					},
 				},
@@ -121,53 +127,61 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "your.email@example.com",
-											"kind": "query",
-											"name": "contact",
-											"orig": "contact",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "m",
-											"kind": "query",
-											"name": "flag",
-											"orig": "flag",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "json",
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "8.8.8.8",
-											"kind": "query",
-											"name": "ip",
-											"orig": "ip",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "b",
-											"kind": "query",
-											"name": "oflag",
-											"orig": "oflag",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/check.php",
 								"segments": []any{
 									map[string]any{
 										"lit": "check.php",
+									},
+								},
+								"parts": []any{
+									"check.php",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "contact",
+											"orig": "contact",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "your.email@example.com",
+										},
+										map[string]any{
+											"name": "flag",
+											"orig": "flag",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "m",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "json",
+										},
+										map[string]any{
+											"name": "ip",
+											"orig": "ip",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "8.8.8.8",
+										},
+										map[string]any{
+											"name": "oflag",
+											"orig": "oflag",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "b",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -178,13 +192,6 @@ func MakeConfig() map[string]any {
 										"ip",
 										"oflag",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"check.php",
 								},
 							},
 						},

@@ -99,26 +99,32 @@ module IpProxyDetectionConfig
           "fields" => [
             {
               "name" => "contact",
+              "title" => "Contact",
               "type" => "`$STRING`",
             },
             {
               "name" => "queryFlags",
+              "title" => "Query Flags",
               "type" => "`$STRING`",
             },
             {
               "name" => "queryFormat",
+              "title" => "Query Format",
               "type" => "`$STRING`",
             },
             {
               "name" => "queryIP",
+              "title" => "Query Ip",
               "type" => "`$STRING`",
             },
             {
               "name" => "result",
+              "title" => "Result",
               "type" => "`$STRING`",
             },
             {
               "name" => "status",
+              "title" => "Status",
               "type" => "`$STRING`",
             },
           ],
@@ -129,47 +135,6 @@ module IpProxyDetectionConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "your.email@example.com",
-                        "kind" => "query",
-                        "name" => "contact",
-                        "orig" => "contact",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "m",
-                        "kind" => "query",
-                        "name" => "flag",
-                        "orig" => "flag",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "json",
-                        "kind" => "query",
-                        "name" => "format",
-                        "orig" => "format",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "8.8.8.8",
-                        "kind" => "query",
-                        "name" => "ip",
-                        "orig" => "ip",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "b",
-                        "kind" => "query",
-                        "name" => "oflag",
-                        "orig" => "oflag",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/check.php",
@@ -178,6 +143,55 @@ module IpProxyDetectionConfig
                       "lit" => "check.php",
                     },
                   ],
+                  "parts" => [
+                    "check.php",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "contact",
+                        "orig" => "contact",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "your.email@example.com",
+                      },
+                      {
+                        "name" => "flag",
+                        "orig" => "flag",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "m",
+                      },
+                      {
+                        "name" => "format",
+                        "orig" => "format",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "json",
+                      },
+                      {
+                        "name" => "ip",
+                        "orig" => "ip",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "8.8.8.8",
+                      },
+                      {
+                        "name" => "oflag",
+                        "orig" => "oflag",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "b",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "contact",
@@ -187,13 +201,6 @@ module IpProxyDetectionConfig
                       "oflag",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "check.php",
-                  ],
                 },
               ],
             },
